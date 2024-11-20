@@ -4,11 +4,15 @@
   border-radius: 5px;
   width: 300px; /* Adjust width as necessary */
   margin: 10px auto;
-  background-color: #fff; /* Added background color */
+  background-color: var(--bg-color);
+  color: var(--text-color);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
   position: relative; /* Positioning context for absolute children */
 }
-
+button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+}
 .header {
   display: flex;
   justify-content: space-between; /* Space between the heading and button */

@@ -5,6 +5,8 @@ import { TaskService } from '../task.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DateFormatPipe } from '../date-format.pipe';
+import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
+import { startOfMonth, endOfMonth } from 'date-fns';
 @Component({
   selector: 'app-task-list',
   standalone: true,

@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+/* Default (Light) Theme */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --button-bg: #f0f0f0;
+    --button-text: #000000;
+  }
+  
+  /* Dark Theme */
+  .dark-theme {
+    --bg-color: #181818;
+    --text-color: #ffffff;
+    --button-bg: #333333;
+    --button-text: #ffffff;
+  }
+  
+  /* Apply CSS variables to the body */
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Optional: Styles for the button when dark mode is enabled */
+  button:hover {
+    opacity: 0.8;
+  }
+  
