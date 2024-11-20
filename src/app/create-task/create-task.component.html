@@ -1,0 +1,41 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <label for="title">Title:</label>
+    <input id="title" formControlName="title" required>
+  
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+  
+    <label for="dueDate">Due Date:</label>
+    <input id="dueDate" type="date" formControlName="dueDate">
+  
+    <label>Priority:</label>
+    <div class="priority-options">
+      <label>
+        <input type="radio" formControlName="priority" value="Low">
+        Low
+      </label>
+      <label>
+        <input type="radio" formControlName="priority" value="Medium" checked>
+        Medium
+      </label>
+      <label>
+        <input type="radio" formControlName="priority" value="High">
+        High
+      </label>
+    </div>
+  
+    <label>Status:</label>
+    <div class="status-options">
+      <label>
+        <input type="radio" formControlName="status" value="Pending">
+        Pending
+      </label>
+      <label>
+        <input type="radio" formControlName="status" value="Completed">
+        Completed
+      </label>
+    </div>
+  
+    <button type="submit">Create Task</button>
+  </form>
+  

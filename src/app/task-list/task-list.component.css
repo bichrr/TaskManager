@@ -1,0 +1,164 @@
+.task-list {
+  border: 1px solid #ccc;
+  padding: 20px; /* Increased padding for better spacing */
+  border-radius: 5px;
+  width: 300px; /* Adjust width as necessary */
+  margin: 10px auto;
+  background-color: #fff; /* Added background color */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+  position: relative; /* Positioning context for absolute children */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Space between the heading and button */
+  align-items: center; /* Center align items vertically */
+}
+
+.filter-button {
+  background: none; /* No background */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor */
+  font-size: 1.5em; /* Adjust size as needed */
+}
+.filter-option.active {
+  background-color: red; /* Active background color */
+  font-weight: bold; /* Optional: make text bold for emphasis */
+}
+
+
+
+.filter-options-container {
+  display: flex;
+  flex-direction: column; /* Stack categories vertically */
+  position: absolute; /* Absolute positioning */
+  right: -170px; /* Position to the right of the task list */
+  top: 20px; /* Align with the header vertically */
+  background-color: #fff; /* Background for visibility */
+  border: 1px solid #ccc; /* Border for visibility */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Padding for inner spacing */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.filter-category {
+  margin-bottom: 10px; /* Space between categories */
+}
+
+.filter-category h3 {
+  margin: 0 0 5px; /* Margin to separate title from buttons */
+}
+
+.filter-option {
+  background: #e7f0ff; /* Light background for options */
+  border: none;
+  border-radius: 5px;
+  margin: 0.5em; /* Adjust the value to increase or decrease space between buttons */
+  padding: 4px; /* Optional: Add some padding for better button appearance */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  padding: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+
+.task-priority {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; /* Make it a circle */
+  margin-left: 10px; /* Space between content and priority color */
+  margin-right: 30px ;
+}
+
+.priority-high {
+  background-color: red; /* Color for high priority */
+}
+
+.priority-medium {
+  background-color: orange; /* Color for medium priority */
+}
+
+.priority-low {
+  background-color: green; /* Color for low priority */
+}
+
+
+.filter-option:hover {
+  background-color: #5E1916; /* Change color on hover */
+}
+
+.task-container {
+  max-height: 200px; /* Adjust height as necessary */
+  overflow-y: auto; /* Allows scrolling if there are many tasks */
+}
+
+.task-box {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space items evenly */
+  background-color: #f9f9f9; /* Background color */
+  padding: 10px; /* Increased padding for task boxes */
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Show ellipsis for overflowing text */
+  transition: box-shadow 0.3s; /* Smooth transition for box shadow */
+}
+
+.task-box:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+.task-box span {
+  flex-grow: 1; /* Allow the span to grow and take up remaining space */
+  overflow: hidden; /* Prevent overflow */
+  white-space: nowrap; /* Keep text on one line */
+  margin-left: 10px; /* Space between checkbox and text */
+}
+
+.delete-button {
+  background: transparent; /* No background for button */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer on hover */
+  color: red; /* Color of the delete icon */
+  font-size: 16px; /* Size of the icon */
+}
+
+.delete-button:hover {
+  color: darkred; /* Darker color on hover */
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray; 
+}
+
+.view-options {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.view-options button {
+  cursor: pointer;
+}
+
+.task-container {
+  display: flex;
+  flex-direction: column; /* Default to list view */
+}
+
+
+
+/* Add additional styles for task boxes, completed tasks, and priority indicators as needed */
