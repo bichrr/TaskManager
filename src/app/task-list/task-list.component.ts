@@ -137,6 +137,9 @@ export class TaskListComponent implements OnInit {
     // Check the updated tasks in the console for debugging
     console.log('Filtered tasks after deletion:', this.filteredTasks);
   }
+  editTask(taskId: string): void {
+    this.router.navigate(['/edit-task', taskId]);
+  }
   
   
 

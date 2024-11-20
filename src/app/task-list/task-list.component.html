@@ -51,6 +51,7 @@
         'priority-low': task.priority === 'Low'
       }"></div>
       
+      <button (click)="editTask(task.id!)" class="update-button"><i class="fas fa-edit"></i></button>
       <button (click)="deleteTask(task)" class="delete-button">X</button>
     </div>  
   </div>

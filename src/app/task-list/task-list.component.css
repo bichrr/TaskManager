@@ -139,6 +139,18 @@
   color: darkred; /* Darker color on hover */
 }
 
+.update-button {
+  background: transparent; /* No background for button */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer on hover */
+  color: black; /* Color of the delete icon */
+  font-size: 16px; /* Size of the icon */
+}
+
+.update-button:hover {
+  color: brown; /* Darker color on hover */
+}
+
 .completed {
   text-decoration: line-through;
   color: gray; 
