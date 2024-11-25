@@ -28,12 +28,16 @@ export class CreateTaskComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    const today = new Date(); // Get today's date
+    const todayDay = today.getDate();
+    const todayMonth = today.getMonth() + 1; 
+    const todayYear = today.getFullYear();
     this.taskForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      day: ['', [Validators.required, Validators.min(1), Validators.max(31)]],
-      month: ['', [Validators.required]],
-      year: ['', [Validators.required, Validators.min(1000), Validators.max(9999)]],
+      day: [todayDay, [Validators.required, Validators.min(1), Validators.max(31)]],
+      month: [todayMonth, [Validators.required]],
+      year: [todayYear, [Validators.required, Validators.min(1000), Validators.max(9999)]],
       priority: ['Medium', Validators.required],
       status: ['Pending', Validators.required],
     }, { 

@@ -9,17 +9,63 @@ body.dark-mode {
   background-color: #121212;
   color: #ffffff;
 }
-
 /* Main calendar container */
 .calendar {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
     border-radius: 8px;
     box-sizing: border-box;
-  } 
+  }
+
+.calendar-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.navigation-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.navigation-button:hover {
+  background-color: #0056b3;
+}
+
+.current-week {
+  background-color: #28a745;
+}
+
+.week-selector {
+  margin-bottom: 20px;
+}
+
+.days {
+  display: flex;
+  gap: 15px;
+}
+
+
+.day-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+  height: 50px;
+}
+
+.task-item {
+  padding: 5px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
   
   /* Container for the navigation buttons */
 .calendar-navigation {

@@ -1,4 +1,4 @@
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter,ViewEncapsulation } from '@angular/core';
 import { Task } from '../task';
 import { Router, RouterModule } from '@angular/router';
 import { TaskService } from '../task.service';
@@ -12,7 +12,8 @@ import { startOfMonth, endOfMonth } from 'date-fns';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule,RouterModule],
   templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.css']
+  styleUrls: ['./task-list.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class TaskListComponent implements OnInit {
   @Output() progressChanged = new EventEmitter<number>(); // EventEmitter for progress update

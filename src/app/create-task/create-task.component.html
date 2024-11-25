@@ -1,6 +1,7 @@
+
 <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
   <label for="title">Title:</label>
-  <input id="title" formControlName="title" required>
+  <input type="text" id= "title" formControlName="title" required>
 
   <label for="description">Description:</label>
   <textarea id="description" formControlName="description"></textarea>
@@ -58,8 +59,11 @@
       <input type="radio" formControlName="status" value="Completed"> Completed
     </label>
   </div>
-
-  <button type="submit" [disabled]="taskForm.invalid">
+  
+  <button 
+    type="submit" 
+    [ngClass]="{ 'valid': taskForm.valid }"
+    [disabled]="taskForm.invalid">
     {{ isEditMode ? 'Edit Task' : 'Create Task' }}
   </button>  
 </form>

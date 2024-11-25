@@ -1,0 +1,14 @@
+[33m9480639[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mnew-feature[m[33m)[m HEAD@{0}: merge new-feature: Fast-forward
+[33ma9ab136[m HEAD@{1}: checkout: moving from 948063972ac02418caddfd992f58e9e895ba8d04 to master
+[33m9480639[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mnew-feature[m[33m)[m HEAD@{2}: checkout: moving from master to 9480639
+[33ma9ab136[m HEAD@{3}: checkout: moving from new-feature to master
+[33m9480639[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mnew-feature[m[33m)[m HEAD@{4}: checkout: moving from 948063972ac02418caddfd992f58e9e895ba8d04 to new-feature
+[33m9480639[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mnew-feature[m[33m)[m HEAD@{5}: checkout: moving from master to 9480639
+[33ma9ab136[m HEAD@{6}: checkout: moving from master to master
+[33ma9ab136[m HEAD@{7}: checkout: moving from 948063972ac02418caddfd992f58e9e895ba8d04 to master
+[33m9480639[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mnew-feature[m[33m)[m HEAD@{8}: commit: fixed create task and added validators
+[33m5b51fe9[m HEAD@{9}: commit: added working calendar
+[33ma9ab136[m HEAD@{10}: checkout: moving from master to a9ab136
+[33ma9ab136[m HEAD@{11}: commit: Added DarkMode
+[33m417ee04[m HEAD@{12}: commit: Added edit button with improved styling and fixed task date handling
+[33ma548cb7[m HEAD@{13}: commit (initial): Initial commit

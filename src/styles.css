@@ -1,35 +1,55 @@
 /* Default (Light) Theme */
 :root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --button-bg: #f0f0f0;
-    --button-text: #000000;
-  }
-  
-  /* Dark Theme */
-  .dark-theme {
-    --bg-color: #181818;
-    --text-color: #ffffff;
-    --button-bg: #333333;
-    --button-text: #ffffff;
-  }
-  
-  /* Apply CSS variables to the body */
-  body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  button {
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    border: none;
-    cursor: pointer;
-  }
-  
-  /* Optional: Styles for the button when dark mode is enabled */
-  button:hover {
-    opacity: 0.8;
-  }
-  
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --button-bg-color: #f0f0f0;
+  --button-text-color: #000000;
+  --input-bg-color: #ffffff;
+  --input-border-color: #cccccc;
+  --hover-opacity: 0.8;
+  --transition-duration: 0.3s;
+}
+
+/* Dark Theme */
+.dark-theme {
+  --bg-color: #181818;
+  --text-color: #ffffff;
+  --button-bg-color: #333333;
+  --button-text-color: #ffffff;
+  --input-bg-color: #2a2a2a;
+  --input-border-color: #444444;
+}
+
+/* Apply global styles */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
+}
+
+/* Buttons */
+button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: 1px solid var(--input-border-color);
+  padding: 0.6em 1.2em;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity var(--transition-duration) ease, background-color var(--transition-duration) ease;
+}
+
+button:hover {
+  opacity: var(--hover-opacity);
+}
+
+
+/* Error Message */
+.error {
+  color: #ff4d4d;
+  font-size: 0.9rem;
+  margin-top: 0.5em;
+}

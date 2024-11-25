@@ -1,28 +1,44 @@
 <div class="calendar">
-    <!-- Navigation Arrows -->
-    <div class="calendar-navigation">
-        <select (change)="goToSelectedWeek($event)">
-  <option *ngFor="let week of weekList" [value]="week">{{ week }}</option>
-</select>
+  <!-- Week Navigation -->
+  <div class="calendar-navigation">
+    <button class="navigation-button" (click)="previousWeek()">&lt;</button>
+    <span class="week-range">
+      {{ currentWeekDates[0] | date: 'MMMM dd, yyyy' }} - 
+      {{ currentWeekDates[6] | date: 'MMMM dd, yyyy' }}
+    </span>
+    <button class="navigation-button current-week" (click)="goToCurrentWeek()">Current Week</button>
+    <button class="navigation-button" (click)="nextWeek()">&gt;</button>
+  </div>
 
-      <button (click)="previousWeek()">&lt;</button>
-      <span>{{ currentWeekDates[0] | date: 'MMMM dd, yyyy' }} - {{ currentWeekDates[6] | date: 'MMMM dd, yyyy' }}</span>
-      <button class="currentweek" (click)="goToCurrentWeek()">Current Week</button>
-      <button (click)="nextWeek()">&gt;</button>
-    </div>
-  
-    <div class="days">
-      <div class="day" *ngFor="let day of weekDays; let i = index">
-        <h3>{{ day }}</h3>
-        <ul>
-          <li *ngFor="let task of getTasksByDate(currentWeekDates[i])">
-            {{ task.title }} (Due: {{ task.dueDate | date: 'shortDate' }})
-          </li>
-          <li *ngIf="getTasksByDate(currentWeekDates[i]).length === 0" class="empty">
-            No tasks for this day
-          </li>
-        </ul>
-      </div>
+  <!-- Week Selector -->
+  <div class="week-selector">
+    <label for="week-dropdown">Jump to Week:</label>
+    <select id="week-dropdown" (change)="goToSelectedWeek($event)">
+      <option *ngFor="let week of weekList" [value]="week">
+        {{ week }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Weekly Tasks -->
+  <div class="days">
+    <div class="day" *ngFor="let day of weekDays; let i = index">
+      <h3 class="day-header">
+         {{ currentWeekDates[i] | date: 'MMM dd, yyyy' }} <br>--- {{day}}  ---
+      </h3>
+
+      <ul class="tasks-list">
+        <!-- Display tasks for the current day -->
+        <li *ngFor="let task of getTasksByDate(currentWeekDates[i])" class="task-item">
+          <span class="task-title">{{ task.title }}</span>
+          <span class="task-due">(Due: {{ task.dueDate }})</span>
+        </li>
+
+        <!-- Message if no tasks are available -->
+        <li *ngIf="getTasksByDate(currentWeekDates[i]).length === 0" class="empty">
+          No tasks for this day
+        </li>
+      </ul>
     </div>
   </div>
-  
+</div>

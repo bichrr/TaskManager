@@ -11,15 +11,18 @@ export function dateNotBeforeToday(): ValidatorFn {
     }
 
     const currentDate = new Date();
-    const userDate = new Date(year, month - 1, day); // months are 0-based in JS
+    currentDate.setHours(0, 0, 0, 0);
+
+    const userDate = new Date(year, month - 1, day); 
 
     if (userDate < currentDate) {
-      return { dateNotBeforeToday: true }; // Custom error
+      return { dateNotBeforeToday: true }; 
     }
 
-    return null; // No errors
+    return null; 
   };
 }
+
 export function dateNotValidForMonth(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const day = control.get('day')?.value;
