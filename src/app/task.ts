@@ -2,7 +2,7 @@ export interface Task {
     id?: string;
     title: string;
     description?: string;
-    dueDate?: Date;
+    dueDate?: string;
     priority?: 'Low' | 'Medium' | 'High';
     status: 'Pending' | 'Completed';
   }

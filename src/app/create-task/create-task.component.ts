@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Task } from '../task';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router'; // Correct imports
-import { TaskService } from '../task.service'
-import { dateNotBeforeToday } from '../validators/date-validators'; // Import the custom validator
+import { Router, ActivatedRoute } from '@angular/router';
+import { TaskService } from '../task.service';
+import { dateNotBeforeToday,dateNotValidForMonth } from '../validators/date-validators';
 
 @Component({
   selector: 'app-task-create',
@@ -15,104 +15,95 @@ import { dateNotBeforeToday } from '../validators/date-validators'; // Import th
 })
 export class CreateTaskComponent implements OnInit {
   taskForm: FormGroup;
-  isEditMode = false; // Track whether it's an edit or create
+  isEditMode = false;
   taskId: string | null = null;
+  months: string[] = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
 
   constructor(
     private fb: FormBuilder,
     private taskService: TaskService,
     private router: Router,
-    private route: ActivatedRoute // Correctly inject ActivatedRoute
+    private route: ActivatedRoute
   ) {
     this.taskForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      dueDate: ['', Validators.required,dateNotBeforeToday],
-      priority: ['', Validators.required],
-      status: ['', Validators.required]
+      day: ['', [Validators.required, Validators.min(1), Validators.max(31)]],
+      month: ['', [Validators.required]],
+      year: ['', [Validators.required, Validators.min(1000), Validators.max(9999)]],
+      priority: ['Medium', Validators.required],
+      status: ['Pending', Validators.required],
+    }, { 
+      validators: [dateNotBeforeToday(), dateNotValidForMonth()]  // Apply both custom validators here
     });
+    
   }
 
+
   ngOnInit(): void {
-    // Check if it's an edit task
-    this.route.paramMap.subscribe((params: ParamMap) => {  // Explicitly type 'params'
-      this.taskId = params.get('id'); // Get task ID from URL if it exists
+    this.route.paramMap.subscribe(params => {
+      this.taskId = params.get('id');
       if (this.taskId) {
         this.isEditMode = true;
-        this.loadTaskForEdit(this.taskId); // Load the task data for editing
+        this.loadTaskForEdit(this.taskId);
       }
     });
   }
 
   loadTaskForEdit(taskId: string): void {
     const task = this.taskService.getTasks().find(t => t.id === taskId);
-    if (task) {
-      const formattedDate = this.formatToDateInputValue(task.dueDate); // Format the date
-      this.taskForm.patchValue({ ...task, dueDate: formattedDate }); // Populate the form with the task data
+    if (task && task.dueDate) {
+      // Split the dueDate (which is formatted dd-mm-yyyy) into day, month, year
+      const [day, month, year] = task.dueDate.split('-');
+      
+      this.taskForm.patchValue({
+        title: task.title,
+        description: task.description,
+        priority: task.priority,
+        status: task.status,
+        day: parseInt(day, 10),
+        month: parseInt(month, 10),
+        year: parseInt(year, 10)
+      });
     }
-  }
-  formatToDateInputValue(value: Date | string | undefined): string {
-    if (!value) return '';
-    const date = new Date(value);
-    const year = date.getFullYear();
-    const month = ('0' + (date.getMonth() + 1)).slice(-2); // Ensure two digits
-    const day = ('0' + date.getDate()).slice(-2); // Ensure two digits
-    return `${year}-${month}-${day}`; // Format as yyyy-MM-dd
-  }
-
-  onDateChange(value: string): void {
-    const [day, month, year] = value.split('/');
-    const formattedDate = new Date(+year, +month - 1, +day);
-    this.taskForm.patchValue({ dueDate: formattedDate });
-  }
-
-  formatDate(value: Date | string): string {
-    if (!value) return '';
-    const date = new Date(value);
-    const day = ('0' + date.getDate()).slice(-2);
-    const month = ('0' + (date.getMonth() + 1)).slice(-2);
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
   }
 
   onSubmit(): void {
     if (this.taskForm.invalid) {
-      let alertMessage = 'Please fix the following errors:\n';
-      if (this.taskForm.get('title')?.hasError('required')) {
-        alertMessage += '- Title is required.\n';
-      }
-      if (this.taskForm.get('description')?.hasError('required')) {
-        alertMessage += '- Description is required.\n';
-      }
-      if (this.taskForm.get('dueDate')?.hasError('required')) {
-        alertMessage += '- Due Date is required.\n';
-      }
-      if (this.taskForm.get('dueDate')?.hasError('dateNotBeforeToday')) {
-        alertMessage += '- Due Date cannot be in the past.\n';  // Add custom error message
-      }
-      if (this.taskForm.get('priority')?.hasError('required')) {
-        alertMessage += '- Priority is required.\n';
-      }
-      if (this.taskForm.get('status')?.hasError('required')) {
-        alertMessage += '- Status is required.\n';
-      }
-      if (alertMessage !== 'Please fix the following errors:\n') {
-        alert(alertMessage);
-        return;
-      }
+      alert("Please fill in all required fields.");
+      return;
     }
-
-    const task: Task = { ...this.taskForm.value, id: this.isEditMode ? this.taskId : undefined };
-
+  
+    const day = this.taskForm.get('day')?.value;
+    const month = this.taskForm.get('month')?.value;
+    const year = this.taskForm.get('year')?.value;
+  
+    // Format the dueDate as "dd-mm-yyyy"
+    const dueDate = `${day.toString().padStart(2, '0')}-${month.toString().padStart(2, '0')}-${year}`;
+  
+    // Prepare the final task object with only the dueDate
+    const task: Task = {
+      title: this.taskForm.get('title')?.value,
+      description: this.taskForm.get('description')?.value,
+      priority: this.taskForm.get('priority')?.value,
+      status: this.taskForm.get('status')?.value,
+      dueDate: dueDate,
+      id: this.isEditMode ? (this.taskId as string) : undefined, // Type assertion here to ensure `taskId` is treated as a string
+    };
+  
+    // Now submit the task
     if (this.isEditMode) {
-      // If it's an edit, update the task
       this.taskService.updateTask(task);
     } else {
-      // If it's a new task, add it
       this.taskService.addTask(task);
     }
-
+  
+    // Reset the form and navigate
     this.taskForm.reset();
-    this.router.navigate(['/']); // Redirect to task list after saving
+    this.router.navigate(['/']);
   }
+  
 }

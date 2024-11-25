@@ -1,41 +1,65 @@
 <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
-    <label for="title">Title:</label>
-    <input id="title" formControlName="title" required>
+  <label for="title">Title:</label>
+  <input id="title" formControlName="title" required>
+
+  <label for="description">Description:</label>
+  <textarea id="description" formControlName="description"></textarea>
+
+  <label for="dueDate">Due Date:</label>
+  <div *ngIf="taskForm.hasError('dateNotBeforeToday')">
+    <p class="error">The due date cannot be in the past.</p>
+  </div>
+  <div *ngIf="taskForm.hasError('invalidDate')">
+    <p class="error">The selected date is invalid for the given month.</p>
+  </div>
   
-    <label for="description">Description:</label>
-    <textarea id="description" formControlName="description"></textarea>
-  
-    <label for="dueDate">Due Date:</label>
-    <input id="dueDate" type="date" formControlName="dueDate">
-  
-    <label>Priority:</label>
-    <div class="priority-options">
-      <label>
-        <input type="radio" formControlName="priority" value="Low">
-        Low
-      </label>
-      <label>
-        <input type="radio" formControlName="priority" value="Medium" checked>
-        Medium
-      </label>
-      <label>
-        <input type="radio" formControlName="priority" value="High">
-        High
-      </label>
-    </div>
-  
-    <label>Status:</label>
-    <div class="status-options">
-      <label>
-        <input type="radio" formControlName="status" value="Pending">
-        Pending
-      </label>
-      <label>
-        <input type="radio" formControlName="status" value="Completed">
-        Completed
-      </label>
-    </div>
-  
-    <button type="submit">Create Task</button>
-  </form>
-  
+  <div class="date-picker">
+    <input
+      id="day"
+      type="number"
+      formControlName="day"
+      [min]="1"
+      [max]="31"
+      placeholder="DD"
+    />
+    <select id="month" formControlName="month">
+      <option value="" disabled>Select Month</option>
+      <option *ngFor="let month of months; let i = index" [value]="i + 1">
+        {{ month }}
+      </option>
+    </select>
+    <input
+      id="year"
+      type="number"
+      formControlName="year"
+      placeholder="YYYY"
+    />
+  </div>
+
+  <label>Priority:</label>
+  <div class="priority-options">
+    <label>
+      <input type="radio" formControlName="priority" value="Low"> Low
+    </label>
+    <label>
+      <input type="radio" formControlName="priority" value="Medium"> Medium
+    </label>
+    <label>
+      <input type="radio" formControlName="priority" value="High"> High
+    </label>
+  </div>
+
+  <label>Status:</label>
+  <div class="status-options">
+    <label>
+      <input type="radio" formControlName="status" value="Pending"> Pending
+    </label>
+    <label>
+      <input type="radio" formControlName="status" value="Completed"> Completed
+    </label>
+  </div>
+
+  <button type="submit" [disabled]="taskForm.invalid">
+    {{ isEditMode ? 'Edit Task' : 'Create Task' }}
+  </button>  
+</form>
