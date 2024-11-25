@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { HeadBarComponent } from "./head-bar/head-bar.component";
 import { Router, NavigationEnd } from '@angular/router';
@@ -6,10 +6,11 @@ import { filter } from 'rxjs/operators';
 import { TaskListComponent } from "./task-list/task-list.component";
 import { CommonModule } from '@angular/common';
 import { CreateTaskComponent } from './create-task/create-task.component';
+import { CalendarComponent } from './calendar/calendar.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeadBarComponent, CreateTaskComponent, TaskListComponent,RouterModule],
+  imports: [HeadBarComponent, CreateTaskComponent, TaskListComponent,RouterModule,CalendarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

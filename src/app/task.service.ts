@@ -73,7 +73,7 @@ export class TaskService {
     }
   }
 
-  private loadTasks(): Task[] {
+  loadTasks(): Task[] {
     if (this.isBrowser()) { // Check if running in a browser environment
       const tasks = localStorage.getItem(this.tasksKey);
       const parsedTasks = tasks ? JSON.parse(tasks) : [];

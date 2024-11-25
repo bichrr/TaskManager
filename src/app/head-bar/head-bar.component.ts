@@ -41,5 +41,7 @@ export class HeadBarComponent implements OnInit {
   goHome(): void {
     this.router.navigate(['/']);
   }
-
+  goToCalendar(): void {
+    this.router.navigate(['/calendar']);
+  }
 }
