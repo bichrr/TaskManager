@@ -1,5 +1,4 @@
 <div class="calendar">
-  <!-- Week Navigation -->
   <div class="calendar-navigation">
     <button class="navigation-button" (click)="previousWeek()">&lt;</button>
     <span class="week-range">
@@ -10,7 +9,6 @@
     <button class="navigation-button" (click)="nextWeek()">&gt;</button>
   </div>
 
-  <!-- Week Selector -->
   <div class="week-selector">
     <label for="week-dropdown">Jump to Week:</label>
     <select id="week-dropdown" (change)="goToSelectedWeek($event)">
@@ -20,7 +18,6 @@
     </select>
   </div>
 
-  <!-- Weekly Tasks -->
   <div class="days">
     <div class="day" *ngFor="let day of weekDays; let i = index">
       <h3 class="day-header">
@@ -28,13 +25,11 @@
       </h3>
 
       <ul class="tasks-list">
-        <!-- Display tasks for the current day -->
         <li *ngFor="let task of getTasksByDate(currentWeekDates[i])" class="task-item">
           <span class="task-title">{{ task.title }}</span>
           <span class="task-due">(Due: {{ task.dueDate }})</span>
         </li>
 
-        <!-- Message if no tasks are available -->
         <li *ngIf="getTasksByDate(currentWeekDates[i]).length === 0" class="empty">
           No tasks for this day
         </li>

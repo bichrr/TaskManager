@@ -28,7 +28,7 @@ export class CreateTaskComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    const today = new Date(); // Get today's date
+    const today = new Date(); 
     const todayDay = today.getDate();
     const todayMonth = today.getMonth() + 1; 
     const todayYear = today.getFullYear();
@@ -41,7 +41,7 @@ export class CreateTaskComponent implements OnInit {
       priority: ['Medium', Validators.required],
       status: ['Pending', Validators.required],
     }, { 
-      validators: [dateNotBeforeToday(), dateNotValidForMonth()]  // Apply both custom validators here
+      validators: [dateNotBeforeToday(), dateNotValidForMonth()]  
     });
     
   }
@@ -60,7 +60,7 @@ export class CreateTaskComponent implements OnInit {
   loadTaskForEdit(taskId: string): void {
     const task = this.taskService.getTasks().find(t => t.id === taskId);
     if (task && task.dueDate) {
-      // Split the dueDate (which is formatted dd-mm-yyyy) into day, month, year
+      
       const [day, month, year] = task.dueDate.split('-');
       
       this.taskForm.patchValue({
@@ -85,27 +85,27 @@ export class CreateTaskComponent implements OnInit {
     const month = this.taskForm.get('month')?.value;
     const year = this.taskForm.get('year')?.value;
   
-    // Format the dueDate as "dd-mm-yyyy"
+    
     const dueDate = `${day.toString().padStart(2, '0')}-${month.toString().padStart(2, '0')}-${year}`;
   
-    // Prepare the final task object with only the dueDate
+    
     const task: Task = {
       title: this.taskForm.get('title')?.value,
       description: this.taskForm.get('description')?.value,
       priority: this.taskForm.get('priority')?.value,
       status: this.taskForm.get('status')?.value,
       dueDate: dueDate,
-      id: this.isEditMode ? (this.taskId as string) : undefined, // Type assertion here to ensure `taskId` is treated as a string
+      id: this.isEditMode ? (this.taskId as string) : undefined, 
     };
   
-    // Now submit the task
+    
     if (this.isEditMode) {
       this.taskService.updateTask(task);
     } else {
       this.taskService.addTask(task);
     }
   
-    // Reset the form and navigate
+    
     this.taskForm.reset();
     this.router.navigate(['/']);
   }

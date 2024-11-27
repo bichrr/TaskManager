@@ -1,4 +1,4 @@
-/* Default (Light) Theme */
+
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
@@ -10,7 +10,7 @@
   --transition-duration: 0.3s;
 }
 
-/* Dark Theme */
+
 .dark-theme {
   --bg-color: #181818;
   --text-color: #ffffff;
@@ -20,7 +20,7 @@
   --input-border-color: #444444;
 }
 
-/* Apply global styles */
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -30,7 +30,7 @@ body {
   transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
 }
 
-/* Buttons */
+
 button {
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
@@ -47,7 +47,7 @@ button:hover {
 }
 
 
-/* Error Message */
+
 .error {
   color: #ff4d4d;
   font-size: 0.9rem;

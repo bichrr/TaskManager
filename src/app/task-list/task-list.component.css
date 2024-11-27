@@ -1,4 +1,4 @@
-/* Task List Container */
+
 .task-list {
   border: 1px solid var(--input-border-color);
   padding: 20px;
@@ -11,14 +11,14 @@
   position: relative;
 }
 
-/* Header Styling */
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Filter Button */
+
 .filter-button {
   background: none;
   border: none;
@@ -26,13 +26,13 @@
   font-size: 1.5em;
 }
 
-/* Filter Option Active State */
+
 .filter-option.active {
   background-color: red;
   font-weight: bold;
 }
 
-/* Filter Options Container */
+
 .filter-options-container {
   display: flex;
   flex-direction: column;
@@ -47,12 +47,12 @@
   z-index: 1000;
 }
 
-/* Filter Category */
+
 .filter-category {
   margin-bottom: 10px;
 }
 
-/* Filter Option */
+
 .filter-option {
   background: #e7f0ff;
   border: none;
@@ -67,7 +67,7 @@
   background-color: #5e1916;
 }
 
-/* Task Item */
+
 .task-item {
   display: flex;
   align-items: center;
@@ -78,7 +78,7 @@
   border-radius: 5px;
 }
 
-/* Task Priority Indicators */
+
 .task-priority {
   width: 20px;
   height: 20px;
@@ -99,13 +99,13 @@
   background-color: green;
 }
 
-/* Task Container */
+
 .task-container {
   max-height: 200px;
   overflow-y: auto;
 }
 
-/* Task Box */
+
 .task-box {
   display: flex;
   align-items: center;
@@ -125,7 +125,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Task Box Text */
+
 .task-box span {
   flex-grow: 1;
   overflow: hidden;
@@ -133,7 +133,7 @@
   margin-left: 10px;
 }
 
-/* Delete Button */
+
 .delete-button {
   background: transparent;
   border: none;
@@ -146,7 +146,7 @@
   color: darkred;
 }
 
-/* Update Button */
+
 .update-button {
   background: transparent;
   border: none;
@@ -159,13 +159,13 @@
   color: brown;
 }
 
-/* Completed Task */
+
 .completed {
   text-decoration: line-through;
   color: gray;
 }
 
-/* View Options */
+
 .view-options {
   display: flex;
   justify-content: space-around;
@@ -176,7 +176,7 @@
   cursor: pointer;
 }
 
-/* Task Container for List View */
+
 .task-container {
   display: flex;
   flex-direction: column;

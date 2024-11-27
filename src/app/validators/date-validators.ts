@@ -7,7 +7,7 @@ export function dateNotBeforeToday(): ValidatorFn {
     const year = control.get('year')?.value;
 
     if (!day || !month || !year) {
-      return null; // Let the other validators handle empty inputs
+      return null; 
     }
 
     const currentDate = new Date();
@@ -30,16 +30,16 @@ export function dateNotValidForMonth(): ValidatorFn {
     const year = control.get('year')?.value;
     
     if (day && month && year) {
-      const date = new Date(year, month - 1, day);  // month is 0-indexed, hence subtract 1
+      const date = new Date(year, month - 1, day);  
 
-      // If the day doesn't match the month-year, it will fix the date
-      // For example, if day=31, month=2 (February), it will adjust the date to March
+      
+      
       const isValidDate = date.getDate() === day && date.getMonth() === month - 1;
 
-      return isValidDate ? null : { invalidDate: true };  // invalidDate error if the day is invalid
+      return isValidDate ? null : { invalidDate: true };  
     }
     
-    return null;  // No error if day, month, or year is missing
+    return null;  
   };
 }
 

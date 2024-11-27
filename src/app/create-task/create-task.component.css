@@ -1,4 +1,4 @@
-/* Default Form Styles */
+
 form {
   max-width: 600px;
   margin: 20px auto;
@@ -9,12 +9,12 @@ form {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Spacing for form groups */
+
 div {
   margin-bottom: 15px;
 }
 
-/* Flex layout for priority and status options */
+
 .priority-options,
 .status-options {
   display: flex;
@@ -22,7 +22,7 @@ div {
   margin-bottom: 1rem;
 }
 
-/* Label styling */
+
 label {
   display: block;
   font-weight: bold;
@@ -31,7 +31,7 @@ label {
   cursor: pointer;
 }
 
-/* Input and Select field styling */
+
 input[type="text"],
 input[type="date"],
 textarea,
@@ -42,12 +42,12 @@ select {
   border-radius: 4px;
   box-sizing: border-box;
   transition: border-color 0.3s;
-  background-color: #fff; /* Default light background */
-  color: #333; /* Default text color */
+  background-color: #fff;
+  color: #333;
 }
 
 
-/* Focus effect for inputs */
+
 input[type="text"]:focus,
 input[type="date"]:focus,
 textarea:focus,
@@ -56,13 +56,13 @@ select:focus {
   outline: none;
 }
 
-/* Error message for validation */
+
 small {
   color: red;
   font-size: 12px;
 }
 
-/* Button styling */
+
 button {
   padding: 10px 15px;
   background-color: #007bff;
@@ -74,20 +74,20 @@ button {
   transition: background-color 0.3s;
 }
 
-/* Hover effect for button */
+
 button:hover {
   background-color: #0056b3;
 }
 
 
-/* Button disabled state */
+
 button:disabled {
   background-color: #dcdcdc;
   cursor: not-allowed;
 }
 
 
-/* Date Picker input styling (day, month, year) */
+
 .date-picker input,
 .date-picker select {
   width: 30%;
@@ -100,7 +100,7 @@ button:disabled {
 }
 
 
-/* Flex layout for the date picker */
+
 .date-picker {
   display: flex;
   justify-content: space-between;
@@ -108,15 +108,15 @@ button:disabled {
   align-items: center;
 }
 
-/* Error message for invalid date */
+
 .error {
   color: red;
   font-size: 12px;
   margin-top: 5px;
 }
 
-/* Dark Mode - Error message styling */
+
 body[data-theme='dark'] .error {
-  color: #f44336; /* Red error message in dark mode */
+  color: #f44336;
 }
 

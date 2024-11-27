@@ -1,15 +1,15 @@
-/* Light Mode */
+
 body {
   background-color: #ffffff;
   color: #000000;
 }
 
-/* Dark Mode */
+
 body.dark-mode {
   background-color: #121212;
   color: #ffffff;
 }
-/* Main calendar container */
+
 .calendar {
     display: flex;
     flex-direction: column;
@@ -67,13 +67,13 @@ body.dark-mode {
 
 
   
-  /* Container for the navigation buttons */
+ 
 .calendar-navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    margin-bottom: 15px; /* Optional: space between the navigation and the calendar */
+    margin-bottom: 15px;
   }
   
   .calendar-navigation button {
@@ -94,36 +94,36 @@ body.dark-mode {
     outline: none;
   }
   
-  /* Ensure the text and buttons stay aligned */
+ 
   .calendar-navigation span {
     font-size: 1rem;
     font-weight: bold;
-    flex-grow: 1; /* Ensures the text takes available space between the buttons */
+    flex-grow: 1;
     text-align: center;
   }
   
-  /* Container for all the days */
+ 
   .days {
-    display: flex; /* Align days horizontally */
-    justify-content: space-between; /* Evenly space out days */
-    gap: 10px; /* Space between each day */
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
   }
   
-  /* Individual day container */
+ 
   .day {
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Make each day take equal space */
+    width: 100%;
     display: flex;
-    flex-direction: column; /* Stack the contents vertically within each day */
+    flex-direction: column;
     justify-content: flex-start;
     height: 100%;
   }
   
-  /* Day title (e.g., Monday, Tuesday) */
+ 
   .day h3 {
     margin: 0;
     text-align: center;
@@ -134,21 +134,21 @@ body.dark-mode {
     font-weight: bold;
   }
   
-  /* Task list inside each day */
+ 
   .day ul {
     list-style: none;
     padding: 0;
     margin: 0;
     overflow-y: auto;
-    height: 150px; /* Set height for scrollable task list */
-    max-height: 200px; /* Allow scrolling when there are many tasks */
+    height: 150px;
+    max-height: 200px;
   }
   
-  /* Individual task item */
+ 
   .day ul li {
     padding: 8px;
     background-color: #f5f5f5;
-    border-left: 4px solid #5cb85c; /* Green left border for tasks */
+    border-left: 4px solid #5cb85c;
     font-size: 0.9em;
     color: #555;
     border-radius: 3px;
@@ -156,12 +156,12 @@ body.dark-mode {
     transition: background-color 0.3s ease;
   }
   
-  /* Hover effect for tasks */
+ 
   .day ul li:hover {
     background-color: #e9f7e9;
   }
   
-  /* Empty day message (when no tasks) */
+ 
   .day ul li.empty {
     color: #999;
     font-style: italic;
@@ -170,28 +170,28 @@ body.dark-mode {
     border: none;
     font-size: 0.9em;
   }
-  /* Style the select dropdown */
+ 
 select {
-    width: 200px; /* Adjust the width as needed */
+    width: 200px;
     padding: 5px;
     font-size: 0.98em;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
-    appearance: none; /* Optional: removes default dropdown arrow */
+    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
   }
   
-  /* Style the dropdown options */
+ 
   select option {
     padding: 10px;
     font-size: 1em;
   }
   
-  /* Limit the visible options to 4 before scrolling */
+ 
   select {
-    max-height: calc(4 * 30px); /* Assuming each option is about 30px in height */
-    overflow-y: auto; /* Enables scrolling if more than 4 items */
+    max-height: calc(4 * 30px);
+    overflow-y: auto;
   }
   

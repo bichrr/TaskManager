@@ -6,8 +6,8 @@ import { CalendarComponent } from './calendar/calendar.component';
 
 export const routes: Routes = [
   { path: '', component: TaskListComponent },
-  { path: 'create-task', component: CreateTaskComponent },   // Route for creating new task
-  { path: 'edit-task/:id', component: CreateTaskComponent },  // Route for editing existing task
+  { path: 'create-task', component: CreateTaskComponent },   
+  { path: 'edit-task/:id', component: CreateTaskComponent },  
   { path: 'calendar', component: CalendarComponent },
 ];
 
